@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = MaterialTheme.colorScheme.primaryContainer
                 ) {
                     Router(modifier = Modifier)
                 }
@@ -33,18 +33,3 @@ class MainActivity : ComponentActivity() {
 }
 
 
-@Composable
-fun Router(modifier: Modifier) {
-    val navController = rememberNavController()
-
-    NavHost(navController = navController, startDestination = "MainScreenRoute") {
-        composable("MainScreenRoute")
-        {
-            //MainScreen()
-        }
-        composable("InformationScreenRoute")
-        {
-            //InformationScreen()
-        }
-    }
-}

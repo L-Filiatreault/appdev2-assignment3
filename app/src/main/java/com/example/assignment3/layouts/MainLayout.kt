@@ -32,13 +32,13 @@ fun MainLayout(
         bottomBar =
         {
             BottomBar()
-        },
-        )
-        {
-            Column(modifier = Modifier.padding(it))
-            {
-                content()
-            }
-
         }
+    )
+
+    {
+        Column(modifier = Modifier.padding(it))
+        {
+                content()
+        }
+    }
 }

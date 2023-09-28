@@ -5,21 +5,41 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar()
 {
+    var title by rememberSaveable{ mutableStateOf("Pokemon Gyms") };
     //val navController = LocalNavController.current;
-    CenterAlignedTopAppBar(title = { Text("Pokemon Gym App") },
+    CenterAlignedTopAppBar(
+        colors = TopAppBarDefaults.smallTopAppBarColors(
+            containerColor = MaterialTheme.colorScheme.onPrimaryContainer,
+            titleContentColor = Color.Black,
+          
+        ),
+        title = {
+            Text(
+                text= title,
+                style = MaterialTheme.typography.titleLarge //Changed the styling here to make the title stand out
+            )
+        },
         navigationIcon = {
             IconButton(onClick = { /*navController.navigateUp()*/}) {
                 Icon(
@@ -31,22 +51,16 @@ fun TopBar()
         actions = {
             Row()
             {
-                IconButton(onClick = { /*navController.navigate("Register/Login"*/}) {
+                IconButton(onClick = {/*
+                        navController.navigate("InformationScreenRoute")*/}) {
                     Icon(
-                        imageVector = Icons.Filled.AccountCircle,
-                        contentDescription = "Login"
-                    )
-                }
-
-                IconButton(onClick = { /*navController.navigate("Register/Signup")*/}) {
-                    Icon(
-                        imageVector = Icons.Filled.Add,
-                        contentDescription = "Signup"
-                    )
+                        imageVector = Icons.Filled.Info,
+                        contentDescription = "Go to Information")
                 }
             }
 
         },
+
     )
 
 }
