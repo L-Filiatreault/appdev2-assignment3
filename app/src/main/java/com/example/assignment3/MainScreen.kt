@@ -45,6 +45,8 @@ fun MainScreen(modifier: Modifier)
                 var lambda : (String) -> Unit = {pokemonGymList.add(it)} //A lambda function to store all the text Values into the list to be outputted on the DisplayList()
 
                 AddGymForm(lambda); //A function which takes input from the user and adds it to the list
+
+                //Put this on the detailsScreen
                 DisplayList(pokemonGymList); //A function to display information from the list
             }
 
