@@ -10,7 +10,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,6 +19,7 @@ import com.example.assignment3.layouts.MainLayout
 @Composable
 fun MainScreen(modifier: Modifier)
 {
+    val navController = LocalNavController.current
 
     MainLayout(){
         val pokemonGymList = rememberMutableStateListOf<String>()
@@ -44,7 +44,7 @@ fun MainScreen(modifier: Modifier)
 
                 var lambda : (String) -> Unit = {pokemonGymList.add(it)} //A lambda function to store all the text Values into the list to be outputted on the DisplayList()
 
-                AddGymForm(lambda); //A function which takes input from the user and adds it to the list
+                AddGymForm(lambda, navController); //A function which takes input from the user and adds it to the list
 
                 //Put this on the detailsScreen
                 DisplayList(pokemonGymList); //A function to display information from the list

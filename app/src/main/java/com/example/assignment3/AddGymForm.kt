@@ -31,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 
 
 /**
@@ -42,7 +43,7 @@ import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddGymForm(addPokemonGymList: (String) -> Unit) {
+fun AddGymForm(addPokemonGymList: (String) -> Unit, navController: NavHostController) {
 
     var gymNameValue by rememberSaveable { mutableStateOf("") } //This will keep the value the user inputted when the screen is rotated
     var gymLeaderValue by rememberSaveable { mutableStateOf("") }
@@ -148,25 +149,10 @@ fun AddGymForm(addPokemonGymList: (String) -> Unit) {
         Spacer(modifier = Modifier.padding(5.dp))
 
         Button(
-            onClick =
-            {
-                //A condition that checks that the user can't input any empty fields into their list
-                if(gymNameValue.isNotBlank() && gymLeaderValue.isNotBlank() && gymElement.isNotBlank() && gymBadge.isNotBlank())
-                {
-                    //Adding the text fields values into the addPokemonGymList
-                    addPokemonGymList("Gym name: ${gymNameValue}\nGym Leader: ${gymLeaderValue}\nGym Element: ${gymElement}\nGym Badge: ${gymBadge}");
+            onClick = {   navController.navigate("DetailsScreenRoute")
 
-                    //Resetting the values of the text fields to empty after the user inputs
-                    gymNameValue = "";
-                    gymLeaderValue = "";
-                    gymElement ="";
-                    gymBadge="";
+                  addPokemonGymList("Gym name: ${gymNameValue}\nGym Leader: ${gymLeaderValue}\nGym Element: ${gymElement}\nGym Badge: ${gymBadge}");
 
-                }
-                else
-                {
-                    Error("All fields must be entered!!!")
-                }
             },
             colors =  ButtonDefaults.buttonColors(
                 containerColor = MaterialTheme.colorScheme.onPrimaryContainer, //Using a bright bold colour to attract the user to click on the button
