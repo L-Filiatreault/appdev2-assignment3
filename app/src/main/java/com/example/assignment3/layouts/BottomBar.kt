@@ -1,57 +1,52 @@
 package com.example.assignment3.layouts
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Row
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.List
-import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Place
 import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.assignment3.LocalNavController
+import com.example.assignment3.Routes
+
+data class NavBarIcon(
+    val route: String,
+    val icon: ImageVector
+)
+
+val items = listOf(NavBarIcon(route= Routes.Main.route, icon= Icons.Outlined.Home),
+    NavBarIcon(route= Routes.Details.route, icon= Icons.Outlined.Place))
+
 
 @Composable
 fun BottomBar()
 {
-    //val navController = LocalNavController.current;
+    val navController = LocalNavController.current
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentDestination = navBackStackEntry?.destination
 
-    BottomAppBar(
-        actions = {
-            IconButton(onClick = {/*navController.navigate("MainScreenRoute")*/}) {
-                Icon(
-                    imageVector = Icons.Filled.Home,
-                    contentDescription = "Go Home"
-                )
-            }
-            IconButton(onClick = {/*
-                            navController.navigate("InformationScreenRoute")*/}) {
-                Icon(
-                    imageVector = Icons.Filled.Create,
-                    contentDescription = "Go to Details")
-            }
-            IconButton(onClick = {/*
-                            navController.navigate("ListScreenRoute")*/}) {
-                Icon(
-                    imageVector = Icons.Filled.List,
-                    contentDescription = "Go to List")
-            }
-
-        },
-        containerColor = MaterialTheme.colorScheme.onPrimaryContainer,
-        contentColor = Color.Black
-
-
-
-    )
+    NavigationBar {
+        items.forEachIndexed { index, item ->
+            NavigationBarItem(
+                icon = { Icon(item.icon, contentDescription = item.route) },
+                selected = currentDestination?.hierarchy?.any {
+                    currentDestination.route?.substringBefore('/') ==
+                            item.route.substringBefore('/') } == true,
+                onClick = { navController.navigate(item.route)}
+            )
+        }
+    }
 
 
 }

@@ -5,14 +5,16 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.AccountBox
 import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.Face
 import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.Star
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -41,21 +43,21 @@ import androidx.navigation.NavHostController
  * It also acts as a way to separate the concerns from the user's input into the list so it doesn't access any immutable variables.
  */
 
+
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddGymForm(addPokemonGymList: (String) -> Unit, navController: NavHostController) {
 
     var gymNameValue by rememberSaveable { mutableStateOf("") } //This will keep the value the user inputted when the screen is rotated
     var gymLeaderValue by rememberSaveable { mutableStateOf("") }
-    var gymElement by rememberSaveable { mutableStateOf("") }
-    var gymBadge by rememberSaveable { mutableStateOf("") }
+    var gymBuildingURL by rememberSaveable { mutableStateOf("") }
 
     //Setting things inside a column to make it appear ordered
     Column( modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     )
-
     {
         Spacer(modifier = Modifier.padding(25.dp))
         Text(text = "Welcome to the Pokemon Gym App" +
@@ -103,29 +105,6 @@ fun AddGymForm(addPokemonGymList: (String) -> Unit, navController: NavHostContro
         }
 
         Spacer(modifier = Modifier.padding(5.dp))
-
-        //Adding a row to store an icon beside the different text fields so it can differentiate each input to the user
-        //Make it easier for the user to know what's the next value to be inputted
-        // In this case the user is inputting the element of the gym they visited
-        Row()
-        {
-            IconButton(onClick = { /*TODO*/ }) {
-                Icon(
-                    Icons.Outlined.Star,
-                    contentDescription = "Gym Element",
-                    modifier = Modifier.size(24.dp)
-                )
-            }
-            TextField(
-                value = gymElement,
-                onValueChange = { gymElement = it },
-                textStyle = TextStyle(textAlign = TextAlign.Left),
-                label = { Text(text = "Enter the Gym Element: ") }
-
-            )
-        }
-        Spacer(modifier = Modifier.padding(5.dp))
-
         //Adding a row to store an icon beside the different text fields so it can differentiate each input to the user
         //Make it easier for the user to know what's the next value to be inputted
         // In this case the user is inputting the badge they earned
@@ -133,25 +112,38 @@ fun AddGymForm(addPokemonGymList: (String) -> Unit, navController: NavHostContro
         {
             IconButton(onClick = { /*TODO*/ }) {
                 Icon(
-                    Icons.Outlined.CheckCircle,
-                    contentDescription = "Gym Badge",
+                    Icons.Outlined.AccountBox,
+                    contentDescription = "Gym Location Image URL",
                     modifier = Modifier.size(24.dp)
                 )
             }
             TextField(
-                value = gymBadge,
-                onValueChange = { gymBadge = it },
+                value = gymBuildingURL,
+                onValueChange = { gymBuildingURL = it },
                 textStyle = TextStyle(textAlign = TextAlign.Left),
-                label = { Text(text = "Enter Gym Badge: ") }
+                label = { Text(text = "Enter Gym Image URL: ") }
             )
         }
 
-        Spacer(modifier = Modifier.padding(5.dp))
+        Spacer(modifier = Modifier.padding(10.dp))
 
         Button(
-            onClick = {   navController.navigate("DetailsScreenRoute")
+            onClick = {
+                if(gymNameValue.isNotBlank() && gymLeaderValue.isNotBlank() && gymBuildingURL.isNotBlank())
+                {
+                    addPokemonGymList("${gymNameValue}\n${gymLeaderValue}\n${gymBuildingURL}");
 
-                  addPokemonGymList("Gym name: ${gymNameValue}\nGym Leader: ${gymLeaderValue}\nGym Element: ${gymElement}\nGym Badge: ${gymBadge}");
+                    //Resetting the values of the text fields to empty after the user inputs
+                    gymNameValue = "";
+                    gymLeaderValue = "";
+                    gymBuildingURL="";
+
+                    navController.navigate("DetailsScreenRoute")
+                }
+                else
+                {
+                    Error("All fields must be entered!!!")
+                }
 
             },
             colors =  ButtonDefaults.buttonColors(
