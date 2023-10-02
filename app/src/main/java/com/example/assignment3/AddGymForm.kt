@@ -133,12 +133,14 @@ fun AddGymForm(addPokemonGymList: (String) -> Unit, navController: NavHostContro
                 {
                     addPokemonGymList("${gymNameValue}\n${gymLeaderValue}\n${gymBuildingURL}");
 
+                    navController.navigate(Routes.Details.go(gymNameValue, gymLeaderValue))
+
                     //Resetting the values of the text fields to empty after the user inputs
                     gymNameValue = "";
                     gymLeaderValue = "";
                     gymBuildingURL="";
 
-                    navController.navigate("DetailsScreenRoute")
+
                 }
                 else
                 {

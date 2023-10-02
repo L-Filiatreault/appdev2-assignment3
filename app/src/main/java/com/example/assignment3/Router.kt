@@ -6,6 +6,9 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.assignment3.Screens.DetailsScreen
+import com.example.assignment3.Screens.InformationScreen
+import com.example.assignment3.Screens.MainScreen
 
 sealed class Routes(val route:String)
 {
@@ -13,8 +16,8 @@ sealed class Routes(val route:String)
 
     object Information: Routes("InformationScreenRoute")
 
-    object Details: Routes("DetailsScreenRoute"){
-        fun go(name: String, location: String) = "DetailsScreenRoute"
+    object Details: Routes("DetailsScreenRoute/{location}/{gymLeader}"){
+        fun go(location: String, gymLeader: String) = "DetailsScreenRoute/$location/$gymLeader"
     }
 }
 
@@ -36,11 +39,15 @@ fun Router(modifier: Modifier, pokemonGymList: SnapshotStateList<String>) {
             }
             composable(Routes.Details.route)
             {
-                DetailsScreen(pokemonGymList, modifier =Modifier)
+                DetailsScreen(
+                    it.arguments?.getString("location") ?: "",
+                    it.arguments?.getString("gymLeader") ?: "",
+                    modifier
+                )
             }
             composable(Routes.Information.route)
             {
-                //InformationScreen()
+                InformationScreen(modifier = Modifier)
             }
         }
 

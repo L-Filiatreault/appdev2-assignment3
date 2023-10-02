@@ -26,7 +26,7 @@ data class NavBarIcon(
 )
 
 val items = listOf(NavBarIcon(route= Routes.Main.route, icon= Icons.Outlined.Home),
-    NavBarIcon(route= Routes.Details.route, icon= Icons.Outlined.Place))
+    NavBarIcon(route= Routes.Details.go("Pewter City", "Brock"), icon= Icons.Outlined.Place))
 
 
 @Composable
