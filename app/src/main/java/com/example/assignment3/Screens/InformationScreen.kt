@@ -19,8 +19,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -35,7 +37,15 @@ import com.example.assignment3.rememberMutableStateListOf
 @Composable
 fun InformationScreen(modifier: Modifier)
 {
-    val navController = LocalNavController.current;
+    //I got this idea from here: https://developer.android.com/jetpack/compose/text/user-input#style-input
+        val rainbowColors: List<Color> = listOf( Color.Yellow,
+            Color.Green, Color.Cyan, Color.Blue)
+        val brush = remember {
+            Brush.linearGradient(
+                colors = rainbowColors
+            )
+        }
+        val navController = LocalNavController.current;
 
     Column(
         modifier = modifier
@@ -85,15 +95,19 @@ fun InformationScreen(modifier: Modifier)
                 .padding(16.dp),
             border = BorderStroke(1.dp, color = MaterialTheme.colorScheme.surfaceTint),
             colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.onPrimary
+                containerColor = Color.Black.copy(alpha=0.5f)
             )
         )
         {
-            Text(text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+
+
+            Text(text = "We are devoted Pokemon fans who want to help would-be trainers record the gyms they have visited. This app takes input from the user " +
+                    "to display the Pokemon gym location, the gym leader and an image of the gym. It will contain a list of all the different gyms visited" +
+                    " as well display the details of each gym visited.",
                 style = TextStyle(
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Normal,
-                    color = MaterialTheme.colorScheme.onPrimaryContainer, //I got this idea from our slides
+                    brush = brush, //I got this idea from our slides
                     letterSpacing = 0.1.sp,
                     lineHeight = 30.sp
                 ),
@@ -114,13 +128,9 @@ fun InformationScreen(modifier: Modifier)
                 modifier = modifier
                     .fillMaxWidth()
                     .height(200.dp)
-
+                    .align(Alignment.BottomEnd)
             )
         }
-
-
-
-
     }
 
 }

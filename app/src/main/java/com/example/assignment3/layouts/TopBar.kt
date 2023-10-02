@@ -33,8 +33,8 @@ fun TopBar()
     //val navController = LocalNavController.current;
     CenterAlignedTopAppBar(
         colors = TopAppBarDefaults.smallTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.onPrimaryContainer,
-            titleContentColor = Color.Black,
+            containerColor = MaterialTheme.colorScheme.onSecondary,
+            titleContentColor = Color.White,
           
         ),
         title = {
@@ -44,7 +44,7 @@ fun TopBar()
             )
         },
         navigationIcon = {
-            IconButton(onClick = { /*navController.navigateUp()*/}) {
+            IconButton(onClick = { navController.navigateUp()}) {
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
                     contentDescription = "Go Back"
