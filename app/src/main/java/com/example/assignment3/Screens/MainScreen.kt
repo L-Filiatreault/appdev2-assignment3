@@ -29,10 +29,8 @@ import com.example.assignment3.PokemonGymInformation
 @Composable
 fun MainScreen(modifier: Modifier, pokemonGymList: SnapshotStateList<PokemonGymInformation>)
 {
+
     val navController = LocalNavController.current
-
-
-
 
         //Using a card here because it looks stylish than the Box
     Card(modifier = modifier
@@ -57,8 +55,6 @@ fun MainScreen(modifier: Modifier, pokemonGymList: SnapshotStateList<PokemonGymI
 
                 AddGymForm(lambda, navController); //A function which takes input from the user and adds it to the list
 
-                //Put this on the detailsScreen
-                //DisplayList(pokemonGymList); //A function to display information from the list
             }
 
 

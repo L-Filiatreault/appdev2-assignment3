@@ -44,8 +44,10 @@ import androidx.navigation.NavHostController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddGymForm(addPokemonGymList: (PokemonGymInformation) -> Unit, navController: NavHostController) {
+fun AddGymForm(pokemonGymList: (PokemonGymInformation) -> Unit, navController: NavHostController) {
 
+
+    var selectedIndex by rememberSaveable { mutableStateOf(-1) }
     var gymNameValue by rememberSaveable { mutableStateOf("") } //This will keep the value the user inputted when the screen is rotated
     var gymLeaderValue by rememberSaveable { mutableStateOf("") }
     var gymBuildingURL by rememberSaveable { mutableStateOf("") }
@@ -81,7 +83,6 @@ fun AddGymForm(addPokemonGymList: (PokemonGymInformation) -> Unit, navController
 
                 )
         }
-
 
         Spacer(modifier = Modifier.padding(5.dp))
 
@@ -128,20 +129,20 @@ fun AddGymForm(addPokemonGymList: (PokemonGymInformation) -> Unit, navController
             onClick = {
                 if(gymNameValue.isNotBlank() && gymLeaderValue.isNotBlank() && gymBuildingURL.isNotBlank())
                 {
-                    addPokemonGymList(PokemonGymInformation(gymNameValue, gymLeaderValue, gymBuildingURL));
+                    var newPokemonGymObject = PokemonGymInformation(gymNameValue, gymLeaderValue, gymBuildingURL)
 
-                    //Add a way to extract the latest index number from the list and add it to a var which will be used in index number
+                    //Adding the new object to the pokemonGymList so it can be displayed in the list and Details
+                    pokemonGymList(newPokemonGymObject);
+
+                    //Added a way to extract the latest index number from the list and use that index number to send to our Details screen
 
 
-                    navController.navigate(Routes.Details.go(indexNumber))
+                    navController.navigate(Routes.Details.go(0))
 
                     //Resetting the values of the text fields to empty after the user inputs
                     gymNameValue = "";
                     gymLeaderValue = "";
                     gymBuildingURL="";
-
-
-
                 }
                 else
                 {

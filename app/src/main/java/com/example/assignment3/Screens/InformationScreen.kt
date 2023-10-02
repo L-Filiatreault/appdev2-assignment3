@@ -107,7 +107,7 @@ fun InformationScreen(modifier: Modifier)
                 style = TextStyle(
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Normal,
-                    brush = brush, //I got this idea from our slides
+                    brush = brush,
                     letterSpacing = 0.1.sp,
                     lineHeight = 30.sp
                 ),

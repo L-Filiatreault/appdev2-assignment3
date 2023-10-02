@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.assignment3.Screens.DetailsScreen
 import com.example.assignment3.Screens.InformationScreen
+import com.example.assignment3.Screens.ListScreen
 import com.example.assignment3.Screens.MainScreen
 
 sealed class Routes(val route:String)
@@ -21,6 +22,7 @@ sealed class Routes(val route:String)
     }
 
     //Make the path for the List screen here
+    object ListScreen: Routes("ListScreenRoute")
 }
 
 @Composable
@@ -36,9 +38,11 @@ fun Router(modifier: Modifier, pokemonGymList: SnapshotStateList<PokemonGymInfor
             }
             composable(Routes.Details.route)
             {
+                val indexNumber = it.arguments?.getInt("indexNumber", 0) ?: 0
+
                 DetailsScreen(
-                    it.arguments?.getInt("indexNumber") ?: 0,
-                    modifier =Modifier
+                    indexNumber,
+                    modifier = Modifier
                 )
             }
             composable(Routes.Information.route)
@@ -47,6 +51,10 @@ fun Router(modifier: Modifier, pokemonGymList: SnapshotStateList<PokemonGymInfor
             }
 
             //Create composable for the list screen here
+            composable(Routes.ListScreen.route)
+            {
+                ListScreen(modifier = Modifier)
+            }
         }
 
     }

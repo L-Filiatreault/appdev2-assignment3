@@ -1,8 +1,11 @@
 package com.example.assignment3
 
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -14,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberImagePainter
 
 /**
  * This function is for displaying the list items in a stylish manner, on Card composables, which are elevated and give a shadow effect.
@@ -22,7 +26,8 @@ import androidx.compose.ui.unit.dp
  *
  */
 @Composable
-fun DisplayListComposableStyled(item: String){
+fun DisplayListComposableStyled(item: PokemonGymInformation){
+
 
     //Chose a card since it looks better than the Box
     //Learned a few styling tips for the shadow and elevation from the Android developer site: https://developer.android.com/jetpack/compose/components/card
@@ -40,20 +45,14 @@ fun DisplayListComposableStyled(item: String){
     )
     {
         //Aligning the text items inside to be more uniform-like
-        Column(
-            modifier = Modifier
-                .padding(10.dp),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
+        Row() {
             Text(
-                text = item,
+                text = "Gym Name: " + item.gymName,
                 modifier = Modifier.padding(4.dp),
                 style = MaterialTheme.typography.labelSmall, //Chose this font since it looks bold and stands out in a good way
                 color = MaterialTheme.colorScheme.onPrimary
             )
+            BuildingTheCoilImage(item.gymImageUrl)
         }
-
     }
-
 }

@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.sp
 import com.example.assignment3.BuildingTheCoilImage
 import com.example.assignment3.LocalNavController
 import com.example.assignment3.LocalPokemonList
+import com.example.assignment3.PokemonGymInformation
 
 
 //I got the idea of using Image Coil to show the image from this video: https://www.youtube.com/watch?v=pbcAVtqZ8bg
@@ -34,37 +35,6 @@ import com.example.assignment3.LocalPokemonList
 fun DetailsScreen(sentInIndex:Int, modifier:Modifier) {
 
     val localPokemonList = LocalPokemonList.current
-//   val navController = LocalNavController.current;
-//    var gymLeaderName  by rememberSaveable { mutableStateOf("") }
-    //    var gymImageUrl  by rememberSaveable { mutableStateOf("") }
-
-//
-    var gymName: String = localPokemonList[sentInIndex]
-
-
-    //I used a similar technique in a Programming 3 assignment where I needed to split the information from a list using a delimiter
-    //I used a joinToString() method because of this tutorial here: https://www.baeldung.com/kotlin/char-array-to-string
-    //When I tried to make the item in the list into a string in order to split it at the '\n' I would get crashes
-    //Therefore I had to use .joinToString() to make the element in the list into a string, which I could split at the '\n'
-
-    val joinedString = gymName.toList().joinToString()
-    val newPokemonGymInfoList = joinedString.split("\n")
-
-    //Creating placeholders here in case the list wasn't populated beforehand and to prevent a crash
-   /* if(pokemonGymList.isEmpty())
-    {
-        gymName = "Pewter City Gym"
-        gymLeaderName = "Brock"
-        gymImageUrl = "https://staticg.sportskeeda.com/editor/2021/03/ddff5-16153318599864.png" //Found this on a quick Google search
-
-    }
-    else
-    {
-        gymName = newPokemonGymInfoList[0]
-        gymLeaderName = newPokemonGymInfoList[1]
-        gymImageUrl = newPokemonGymInfoList[2]
-    }*/
-
 
     Card(modifier = modifier
         .fillMaxWidth()
@@ -87,7 +57,7 @@ fun DetailsScreen(sentInIndex:Int, modifier:Modifier) {
             Spacer(modifier = Modifier.padding(10.dp))
 
 
-            Text(text = "Gym Name: ",
+            Text(text = "Gym Name: " + localPokemonList[sentInIndex].gymName,
                 modifier = Modifier.padding(4.dp),
                 style = TextStyle(
                     fontSize = 24.sp,
@@ -99,7 +69,7 @@ fun DetailsScreen(sentInIndex:Int, modifier:Modifier) {
             )
             Spacer(modifier = Modifier.padding(30.dp))
 
-            Text(text ="Gym Leader: " ,
+            Text(text ="Gym Leader: " + localPokemonList[sentInIndex].gymLeader,
                 modifier = Modifier.padding(4.dp),
                 style = TextStyle(
                     fontSize = 24.sp,
@@ -111,12 +81,10 @@ fun DetailsScreen(sentInIndex:Int, modifier:Modifier) {
             )
             Spacer(modifier = Modifier.padding(10.dp))
 
-            //BuildingTheCoilImage(sentInImageURL)
+            BuildingTheCoilImage(localPokemonList[sentInIndex].gymImageUrl)
 
         }
 
     }
-
-
 }
 
