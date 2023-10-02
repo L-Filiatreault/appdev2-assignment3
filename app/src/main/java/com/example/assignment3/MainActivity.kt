@@ -1,6 +1,7 @@
 package com.example.assignment3
 
 import android.os.Bundle
+import android.os.Parcelable
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,13 +16,15 @@ import androidx.navigation.compose.rememberNavController
 import com.example.assignment3.ui.theme.Assignment3Theme
 
 import androidx.navigation.NavHostController
-
+import kotlinx.parcelize.Parcelize
 import com.example.assignment3.layouts.MainLayout
 
-
+@Parcelize
+data class PokemonGymInformation(val gymName: String, val gymLeader: String, val gymImageUrl: String): Parcelable
+val LocalPokemonList = compositionLocalOf <List<String> >{ error("No LocalPokemonList found!") }
 val LocalNavController = compositionLocalOf<NavHostController> { error("No NavController found!") }
 
-data class PokemonGymInput(val gymLocation: String, val gymLeader: String, val gymImageUrl: String)
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,13 +36,16 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.primaryContainer
                 ) {
+
                     val pokemonGymList = rememberMutableStateListOf<String>()
                     val navController = rememberNavController()
                     CompositionLocalProvider(LocalNavController provides navController)
                     {
-                        MainLayout()
-                        {
-                            Router(modifier = Modifier, pokemonGymList)
+                        CompositionLocalProvider(LocalPokemonList provides pokemonGymList) {
+                            MainLayout()
+                            {
+                                Router(modifier = Modifier, pokemonGymList)
+                            }
                         }
                     }
                 }

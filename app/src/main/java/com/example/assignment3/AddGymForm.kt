@@ -128,9 +128,10 @@ fun AddGymForm(addPokemonGymList: (String) -> Unit, navController: NavHostContro
             onClick = {
                 if(gymNameValue.isNotBlank() && gymLeaderValue.isNotBlank() && gymBuildingURL.isNotBlank())
                 {
-                    addPokemonGymList("${gymNameValue}\n${gymLeaderValue}\n${gymBuildingURL}");
+                    addPokemonGymList("Gym name: ${gymNameValue}\nGym leader: ${gymLeaderValue}\nImage: ${gymBuildingURL}");
 
-                    navController.navigate(Routes.Details.go(gymNameValue, gymLeaderValue, gymBuildingURL))
+                    //Add a way to extract the latest index number from the list and add it to a var which will be used in index number
+                    navController.navigate(Routes.Details.go(indexNumber))
 
                     //Resetting the values of the text fields to empty after the user inputs
                     gymNameValue = "";

@@ -16,14 +16,14 @@ sealed class Routes(val route:String)
 
     object Information: Routes("InformationScreenRoute")
 
-    object Details: Routes("DetailsScreenRoute/{location}/{gymLeader}/{gymBuildingURL}"){
-        fun go(location: String, gymLeader: String, gymBuildingURL: String) = "DetailsScreenRoute/$location/$gymLeader/$gymBuildingURL"
+    object Details: Routes("DetailsScreenRoute/{indexNumber}"){
+        fun go(indexNumber: Int) = "DetailsScreenRoute/$indexNumber"
     }
 
     //Make the path for the List screen here
 }
 
-data class PokemonGymInformation(val gymName: String, val gymLeader: String, val gymImageUrl: String)
+//data class PokemonGymInformation(val gymName: String, val gymLeader: String, val gymImageUrl: String)
 
 @Composable
 fun Router(modifier: Modifier, pokemonGymList: SnapshotStateList<String>) {
@@ -42,10 +42,8 @@ fun Router(modifier: Modifier, pokemonGymList: SnapshotStateList<String>) {
             composable(Routes.Details.route)
             {
                 DetailsScreen(
-                    it.arguments?.getString("location") ?: "",
-                    it.arguments?.getString("gymLeader") ?: "",
-                    it.arguments?.getString("imageUrl") ?: "",
-                    modifier
+                    it.arguments?.getInt(indexNumber) ?: 0,
+                    modifier =Modifier
                 )
             }
             composable(Routes.Information.route)
