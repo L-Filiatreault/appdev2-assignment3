@@ -24,7 +24,7 @@ sealed class Routes(val route:String)
 }
 
 @Composable
-fun Router(modifier: Modifier, pokemonGymList: SnapshotStateList<String>) {
+fun Router(modifier: Modifier, pokemonGymList: SnapshotStateList<PokemonGymInformation>) {
     val navController= LocalNavController.current
 
     CompositionLocalProvider(LocalNavController provides navController){

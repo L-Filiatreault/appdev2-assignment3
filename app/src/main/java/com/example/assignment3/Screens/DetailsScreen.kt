@@ -87,7 +87,7 @@ fun DetailsScreen(sentInIndex:Int, modifier:Modifier) {
             Spacer(modifier = Modifier.padding(10.dp))
 
 
-            Text(text = "Gym Name: $sentInGymName",
+            Text(text = "Gym Name: ",
                 modifier = Modifier.padding(4.dp),
                 style = TextStyle(
                     fontSize = 24.sp,
@@ -99,7 +99,7 @@ fun DetailsScreen(sentInIndex:Int, modifier:Modifier) {
             )
             Spacer(modifier = Modifier.padding(30.dp))
 
-            Text(text ="Gym Leader: $sentInLeaderName" ,
+            Text(text ="Gym Leader: " ,
                 modifier = Modifier.padding(4.dp),
                 style = TextStyle(
                     fontSize = 24.sp,
@@ -111,7 +111,7 @@ fun DetailsScreen(sentInIndex:Int, modifier:Modifier) {
             )
             Spacer(modifier = Modifier.padding(10.dp))
 
-            BuildingTheCoilImage(sentInImageURL)
+            //BuildingTheCoilImage(sentInImageURL)
 
         }
 

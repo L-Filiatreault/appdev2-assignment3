@@ -21,7 +21,7 @@ import com.example.assignment3.layouts.MainLayout
 
 @Parcelize
 data class PokemonGymInformation(val gymName: String, val gymLeader: String, val gymImageUrl: String): Parcelable
-val LocalPokemonList = compositionLocalOf <List<String> >{ error("No LocalPokemonList found!") }
+val LocalPokemonList = compositionLocalOf <List<PokemonGymInformation> >{ error("No LocalPokemonList found!") }
 val LocalNavController = compositionLocalOf<NavHostController> { error("No NavController found!") }
 
 
@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.primaryContainer
                 ) {
 
-                    val pokemonGymList = rememberMutableStateListOf<String>()
+                    val pokemonGymList = rememberMutableStateListOf<PokemonGymInformation>()
                     val navController = rememberNavController()
                     CompositionLocalProvider(LocalNavController provides navController)
                     {
