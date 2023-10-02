@@ -41,7 +41,8 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     CompositionLocalProvider(LocalNavController provides navController)
                     {
-                        CompositionLocalProvider(LocalPokemonList provides pokemonGymList) {
+                        CompositionLocalProvider(LocalPokemonList provides pokemonGymList)
+                        {
                             MainLayout()
                             {
                                 Router(modifier = Modifier, pokemonGymList)

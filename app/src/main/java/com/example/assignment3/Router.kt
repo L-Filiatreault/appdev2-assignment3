@@ -23,14 +23,9 @@ sealed class Routes(val route:String)
     //Make the path for the List screen here
 }
 
-//data class PokemonGymInformation(val gymName: String, val gymLeader: String, val gymImageUrl: String)
-
 @Composable
 fun Router(modifier: Modifier, pokemonGymList: SnapshotStateList<String>) {
     val navController= LocalNavController.current
-
-
-
 
     CompositionLocalProvider(LocalNavController provides navController){
 
@@ -42,7 +37,7 @@ fun Router(modifier: Modifier, pokemonGymList: SnapshotStateList<String>) {
             composable(Routes.Details.route)
             {
                 DetailsScreen(
-                    it.arguments?.getInt(indexNumber) ?: 0,
+                    it.arguments?.getInt("indexNumber") ?: 0,
                     modifier =Modifier
                 )
             }
