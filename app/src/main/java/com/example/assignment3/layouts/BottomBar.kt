@@ -1,15 +1,9 @@
 package com.example.assignment3.layouts
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Create
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Place
-import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.runtime.Composable
@@ -25,8 +19,12 @@ data class NavBarIcon(
     val icon: ImageVector
 )
 
-val items = listOf(NavBarIcon(route= Routes.Main.route, icon= Icons.Outlined.Home),
-    NavBarIcon(route= Routes.Details.go("Pewter City", "Brock"), icon= Icons.Outlined.Place))
+
+//Disable this until user has entered in some stuff
+
+
+val items = listOf(NavBarIcon(route= Routes.Main.route, icon= Icons.Outlined.Home))
+    //NavBarIcon(route= Routes.Details.go("Pewter City", "Brock", "https://staticg.sportskeeda.com/editor/2021/03/ddff5-16153318599864.png"), icon= Icons.Outlined.Place))
 
 
 @Composable

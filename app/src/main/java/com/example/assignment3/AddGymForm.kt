@@ -5,16 +5,13 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AccountBox
-import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.Face
 import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -133,7 +130,7 @@ fun AddGymForm(addPokemonGymList: (String) -> Unit, navController: NavHostContro
                 {
                     addPokemonGymList("${gymNameValue}\n${gymLeaderValue}\n${gymBuildingURL}");
 
-                    navController.navigate(Routes.Details.go(gymNameValue, gymLeaderValue))
+                    navController.navigate(Routes.Details.go(gymNameValue, gymLeaderValue, gymBuildingURL))
 
                     //Resetting the values of the text fields to empty after the user inputs
                     gymNameValue = "";

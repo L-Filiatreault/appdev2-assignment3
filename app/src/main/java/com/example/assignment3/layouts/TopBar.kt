@@ -44,11 +44,20 @@ fun TopBar()
             )
         },
         navigationIcon = {
-            IconButton(onClick = { navController.navigateUp()}) {
-                Icon(
-                    imageVector = Icons.Filled.ArrowBack,
-                    contentDescription = "Go Back"
-                )
+            IconButton(onClick =
+            {
+                navController.navigateUp()
+            }
+            ) {
+                if(navController.navigateUp())
+                {
+                    Icon(
+                        imageVector = Icons.Filled.ArrowBack,
+                        contentDescription = "Go Back"
+                    )
+                }
+
+
             }
         },
         actions = {

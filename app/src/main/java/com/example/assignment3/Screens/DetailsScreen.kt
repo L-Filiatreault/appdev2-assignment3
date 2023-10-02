@@ -24,22 +24,23 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.assignment3.BuildingTheCoilImage
 import com.example.assignment3.LocalNavController
 
 
 //I got the idea of using Image Coil to show the image from this video: https://www.youtube.com/watch?v=pbcAVtqZ8bg
 @Composable
-fun DetailsScreen(sentInGymName: String, sentInLeaderName: String, modifier:Modifier) {
+fun DetailsScreen(sentInGymName: String, sentInLeaderName: String, sentInImageURL: String, modifier:Modifier) {
 
-    val navController = LocalNavController.current;
-    var gymLeaderName  by rememberSaveable { mutableStateOf("") }
-    var gymName  by rememberSaveable { mutableStateOf("") }
-    var gymImageUrl  by rememberSaveable { mutableStateOf("") }
+//   val navController = LocalNavController.current;
+//    var gymLeaderName  by rememberSaveable { mutableStateOf("") }
+//    var gymName  by rememberSaveable { mutableStateOf("") }
+//    var gymImageUrl  by rememberSaveable { mutableStateOf("") }
 
-
-    gymName = sentInGymName
-    gymLeaderName = sentInLeaderName
-   // gymImageUrl = sentInUrl
+//
+//    gymName = sentInGymName
+//    gymLeaderName = sentInLeaderName
+//    gymImageUrl = sentInImageURL
 
     //I used a similar technique in a Programming 3 assignment where I needed to split the information from a list using a delimiter
     //I used a joinToString() method because of this tutorial here: https://www.baeldung.com/kotlin/char-array-to-string
@@ -86,7 +87,7 @@ fun DetailsScreen(sentInGymName: String, sentInLeaderName: String, modifier:Modi
             Spacer(modifier = Modifier.padding(10.dp))
 
 
-            Text(text = "Gym Name: $gymName",
+            Text(text = "Gym Name: $sentInGymName",
                 modifier = Modifier.padding(4.dp),
                 style = TextStyle(
                     fontSize = 24.sp,
@@ -98,7 +99,7 @@ fun DetailsScreen(sentInGymName: String, sentInLeaderName: String, modifier:Modi
             )
             Spacer(modifier = Modifier.padding(30.dp))
 
-            Text(text ="Gym Leader: $gymLeaderName" ,
+            Text(text ="Gym Leader: $sentInLeaderName" ,
                 modifier = Modifier.padding(4.dp),
                 style = TextStyle(
                     fontSize = 24.sp,
@@ -110,7 +111,7 @@ fun DetailsScreen(sentInGymName: String, sentInLeaderName: String, modifier:Modi
             )
             Spacer(modifier = Modifier.padding(10.dp))
 
-                //BuildingTheCoilImage(gymImageUrl)
+            BuildingTheCoilImage(sentInImageURL)
 
         }
 

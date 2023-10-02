@@ -16,9 +16,11 @@ sealed class Routes(val route:String)
 
     object Information: Routes("InformationScreenRoute")
 
-    object Details: Routes("DetailsScreenRoute/{location}/{gymLeader}"){
-        fun go(location: String, gymLeader: String) = "DetailsScreenRoute/$location/$gymLeader"
+    object Details: Routes("DetailsScreenRoute/{location}/{gymLeader}/{gymBuildingURL}"){
+        fun go(location: String, gymLeader: String, gymBuildingURL: String) = "DetailsScreenRoute/$location/$gymLeader/$gymBuildingURL"
     }
+
+    //Make the path for the List screen here
 }
 
 data class PokemonGymInformation(val gymName: String, val gymLeader: String, val gymImageUrl: String)
@@ -42,6 +44,7 @@ fun Router(modifier: Modifier, pokemonGymList: SnapshotStateList<String>) {
                 DetailsScreen(
                     it.arguments?.getString("location") ?: "",
                     it.arguments?.getString("gymLeader") ?: "",
+                    it.arguments?.getString("imageUrl") ?: "",
                     modifier
                 )
             }
@@ -49,6 +52,8 @@ fun Router(modifier: Modifier, pokemonGymList: SnapshotStateList<String>) {
             {
                 InformationScreen(modifier = Modifier)
             }
+
+            //Create composable for the list screen here
         }
 
     }
