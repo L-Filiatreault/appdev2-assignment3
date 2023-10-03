@@ -50,7 +50,7 @@ fun InformationScreen(modifier: Modifier)
             .verticalScroll(
                 state = rememberScrollState()
             )
-            .background(color = Color.Gray)
+            .background(color = MaterialTheme.colorScheme.onSecondary)
     ){
         Box(
             modifier = Modifier

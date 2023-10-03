@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -41,8 +42,8 @@ fun DisplayListComposableStyled(item: PokemonGymInformation){
     //Learned a few styling tips for the shadow and elevation from the Android developer site: https://developer.android.com/jetpack/compose/components/card
     Card(
         modifier = Modifier
-            .padding(4.dp)
-            .fillMaxSize(),
+            .fillMaxHeight()
+            .fillMaxWidth(),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.primary
         ),

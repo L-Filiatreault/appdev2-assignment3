@@ -28,8 +28,6 @@ import com.example.assignment3.LocalPokemonList
 @Composable
 fun MainScreen(modifier: Modifier)
 {
-    val pokemonListCurrent = LocalPokemonList.current
-    val navController = LocalNavController.current
 
         //Using a card here because it looks stylish than the Box
     Card(modifier = modifier

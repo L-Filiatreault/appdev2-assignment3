@@ -2,12 +2,16 @@ package com.example.assignment3.Screens
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -57,11 +61,9 @@ fun ListScreen(modifier:Modifier) {
             letterSpacing = 0.1.sp,
             lineHeight = 30.sp,
             modifier = Modifier
-                .padding(20.dp)
                 .align(alignment = Alignment.CenterHorizontally)
         )
-        Spacer(modifier = Modifier.padding(6.dp))
-        LazyColumn(modifier = Modifier.height(400.dp))
+        LazyColumn(modifier = Modifier.height(500.dp))
         {
             //Going through the list items one-by-one, and sending them to the DisplayListComposableStyled() function.
             //As well if the user clicks on a list item it will delete that item from the list and therefore the screen itself.
