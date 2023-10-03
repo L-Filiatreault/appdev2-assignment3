@@ -1,4 +1,4 @@
-package com.example.assignment3
+package com.example.assignment3.SupportingFiles
 
 
 import androidx.compose.foundation.layout.Arrangement
@@ -30,7 +30,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
+import com.example.assignment3.LocalNavController
+import com.example.assignment3.LocalPokemonList
+import com.example.assignment3.PokemonGymInformation
 
 
 /**
@@ -52,7 +54,7 @@ fun AddGymForm() {
     var gymNameValue by rememberSaveable { mutableStateOf("") } //This will keep the value the user inputted when the screen is rotated
     var gymLeaderValue by rememberSaveable { mutableStateOf("") }
     var gymBuildingURL by rememberSaveable { mutableStateOf("") }
-  
+
 
     //Setting things inside a column to make it appear ordered
     Column( modifier = Modifier.fillMaxWidth(),

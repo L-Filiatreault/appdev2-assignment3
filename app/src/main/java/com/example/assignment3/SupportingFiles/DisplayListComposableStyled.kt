@@ -1,4 +1,4 @@
-package com.example.assignment3.Screens
+package com.example.assignment3.SupportingFiles
 
 
 import androidx.compose.foundation.Image

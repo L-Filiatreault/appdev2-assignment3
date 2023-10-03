@@ -1,11 +1,10 @@
-package com.example.assignment3
+package com.example.assignment3.SupportingFiles
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.assignment3.LocalNavController
 import com.example.assignment3.Screens.DetailsScreen
 import com.example.assignment3.Screens.InformationScreen
 import com.example.assignment3.Screens.ListScreen

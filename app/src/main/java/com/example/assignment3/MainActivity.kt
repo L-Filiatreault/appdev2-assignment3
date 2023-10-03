@@ -17,6 +17,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.assignment3.ui.theme.Assignment3Theme
 
 import androidx.navigation.NavHostController
+import com.example.assignment3.SupportingFiles.Router
+import com.example.assignment3.SupportingFiles.rememberMutableStateListOf
 import kotlinx.parcelize.Parcelize
 import com.example.assignment3.layouts.MainLayout
 
@@ -35,7 +37,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.primaryContainer
+                    color = MaterialTheme.colorScheme.onSecondary
                 ) {
 
                     val pokemonGymList = rememberMutableStateListOf<PokemonGymInformation>()

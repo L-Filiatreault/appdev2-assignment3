@@ -5,7 +5,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,7 +16,6 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -30,9 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.assignment3.LocalNavController
 import com.example.assignment3.R
-import com.example.assignment3.rememberMutableStateListOf
 
 @Composable
 fun InformationScreen(modifier: Modifier)
@@ -50,13 +46,12 @@ fun InformationScreen(modifier: Modifier)
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(top = 10.dp)
+            .fillMaxWidth()
             .verticalScroll(
                 state = rememberScrollState()
             )
-            .background(color = MaterialTheme.colorScheme.onTertiary)
+            .background(color = Color.Gray)
     ){
-
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -88,6 +83,8 @@ fun InformationScreen(modifier: Modifier)
             )
         }
 
+
+
         Card(
             modifier = modifier
                 .fillMaxWidth()
@@ -100,17 +97,10 @@ fun InformationScreen(modifier: Modifier)
         )
         {
 
-
             Text(text = "We are devoted Pokemon fans who want to help would-be trainers record the gyms they have visited. This app takes input from the user " +
                     "to display the Pokemon gym location, the gym leader and an image of the gym. It will contain a list of all the different gyms visited" +
                     " as well display the details of each gym visited.",
-                style = TextStyle(
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Normal,
-                    brush = brush,
-                    letterSpacing = 0.1.sp,
-                    lineHeight = 30.sp
-                ),
+                style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier
                     .padding(16.dp))
         }

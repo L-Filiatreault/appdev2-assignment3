@@ -30,7 +30,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.assignment3.LocalNavController
 import com.example.assignment3.LocalPokemonList
-import com.example.assignment3.Routes
+import com.example.assignment3.SupportingFiles.Routes
+import com.example.assignment3.SupportingFiles.DisplayListComposableStyled
 
 @Composable
 fun ListScreen(modifier:Modifier) {
