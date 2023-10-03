@@ -10,6 +10,7 @@ import androidx.compose.material3.Surface
 
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
 
 import androidx.navigation.compose.rememberNavController
@@ -21,7 +22,7 @@ import com.example.assignment3.layouts.MainLayout
 
 @Parcelize
 data class PokemonGymInformation(val gymName: String, val gymLeader: String, val gymImageUrl: String): Parcelable
-val LocalPokemonList = compositionLocalOf <List<PokemonGymInformation> >{ error("No LocalPokemonList found!") }
+val LocalPokemonList = compositionLocalOf <SnapshotStateList<PokemonGymInformation>>{ error("No LocalPokemonList found!") }
 val LocalNavController = compositionLocalOf<NavHostController> { error("No NavController found!") }
 
 
