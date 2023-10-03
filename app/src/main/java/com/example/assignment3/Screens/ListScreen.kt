@@ -30,7 +30,7 @@ import com.example.assignment3.Routes
 @Composable
 fun ListScreen(modifier:Modifier) {
     val pokemonListCurrent = LocalPokemonList.current
-    var selectedIndex by rememberSaveable { mutableStateOf(-1) }
+    var selectedIndex by rememberSaveable { mutableStateOf("") }
     val navController = LocalNavController.current
 
     Card(
@@ -56,7 +56,7 @@ fun ListScreen(modifier:Modifier) {
             items(pokemonListCurrent) { item ->
                 Row(modifier = Modifier
                     .clickable {
-                        selectedIndex = pokemonListCurrent.indexOf(item)
+                        selectedIndex = pokemonListCurrent.indexOf(item).toString()
                         navController.navigate(Routes.Details.go(selectedIndex))
                     })
                 {

@@ -46,8 +46,9 @@ import androidx.navigation.NavHostController
 @Composable
 fun AddGymForm(pokemonGymList: (PokemonGymInformation) -> Unit, navController: NavHostController) {
 
+    val pList = LocalPokemonList.current
 
-    var selectedIndex by rememberSaveable { mutableStateOf(-1) }
+    var selectedIndex by rememberSaveable { mutableStateOf("") }
     var gymNameValue by rememberSaveable { mutableStateOf("") } //This will keep the value the user inputted when the screen is rotated
     var gymLeaderValue by rememberSaveable { mutableStateOf("") }
     var gymBuildingURL by rememberSaveable { mutableStateOf("") }
@@ -135,9 +136,9 @@ fun AddGymForm(pokemonGymList: (PokemonGymInformation) -> Unit, navController: N
                     pokemonGymList(newPokemonGymObject);
 
                     //Added a way to extract the latest index number from the list and use that index number to send to our Details screen
+                    //Converting it to string since it's the only way the value is stored inside of our Route string and can be read properly
+                    selectedIndex = pList.indexOf(newPokemonGymObject).toString()
 
-
-                    navController.navigate(Routes.Details.go(0))
 
                     //Resetting the values of the text fields to empty after the user inputs
                     gymNameValue = "";

@@ -18,7 +18,7 @@ sealed class Routes(val route:String)
     object Information: Routes("InformationScreenRoute")
 
     object Details: Routes("DetailsScreenRoute/{indexNumber}"){
-        fun go(indexNumber: Int) = "DetailsScreenRoute/$indexNumber"
+        fun go(indexNumber: String) = "DetailsScreenRoute/$indexNumber"
     }
 
     //Make the path for the List screen here
@@ -38,10 +38,10 @@ fun Router(modifier: Modifier, pokemonGymList: SnapshotStateList<PokemonGymInfor
             }
             composable(Routes.Details.route)
             {
-                val indexNumber = it.arguments?.getInt("indexNumber", 0) ?: 0
+                val indexNumber2 = it.arguments?.getString("indexNumber") !!
 
                 DetailsScreen(
-                    indexNumber,
+                    indexNumber2,
                     modifier = Modifier
                 )
             }

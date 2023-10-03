@@ -32,9 +32,12 @@ import com.example.assignment3.PokemonGymInformation
 
 //I got the idea of using Image Coil to show the image from this video: https://www.youtube.com/watch?v=pbcAVtqZ8bg
 @Composable
-fun DetailsScreen(sentInIndex:Int, modifier:Modifier) {
+fun DetailsScreen(sentInIndex:String, modifier:Modifier) {
 
     val localPokemonList = LocalPokemonList.current
+
+    //Converting the value of the index from String to Int to call the right index.
+    val indexNumber = sentInIndex.toInt()
 
     Card(modifier = modifier
         .fillMaxWidth()
@@ -57,7 +60,7 @@ fun DetailsScreen(sentInIndex:Int, modifier:Modifier) {
             Spacer(modifier = Modifier.padding(10.dp))
 
 
-            Text(text = "Gym Name: " + localPokemonList[sentInIndex].gymName,
+            Text(text = "Gym Name: " + localPokemonList[indexNumber].gymName,
                 modifier = Modifier.padding(4.dp),
                 style = TextStyle(
                     fontSize = 24.sp,
@@ -69,7 +72,7 @@ fun DetailsScreen(sentInIndex:Int, modifier:Modifier) {
             )
             Spacer(modifier = Modifier.padding(30.dp))
 
-            Text(text ="Gym Leader: " + localPokemonList[sentInIndex].gymLeader,
+            Text(text ="Gym Leader: " + localPokemonList[indexNumber].gymLeader,
                 modifier = Modifier.padding(4.dp),
                 style = TextStyle(
                     fontSize = 24.sp,
@@ -81,7 +84,7 @@ fun DetailsScreen(sentInIndex:Int, modifier:Modifier) {
             )
             Spacer(modifier = Modifier.padding(10.dp))
 
-            BuildingTheCoilImage(localPokemonList[sentInIndex].gymImageUrl)
+            BuildingTheCoilImage(localPokemonList[indexNumber].gymImageUrl)
 
         }
 
