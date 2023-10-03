@@ -45,7 +45,7 @@ fun InformationScreen(modifier: Modifier)
                 colors = rainbowColors
             )
         }
-        val navController = LocalNavController.current;
+
 
     Column(
         modifier = modifier
@@ -60,7 +60,7 @@ fun InformationScreen(modifier: Modifier)
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(200.dp)
+                .fillMaxHeight()
         )
         {
             val imagePainter = painterResource(id = R.drawable.pokeball)

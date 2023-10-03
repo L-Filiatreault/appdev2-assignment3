@@ -46,7 +46,7 @@ class MainActivity : ComponentActivity() {
                         {
                             MainLayout()
                             {
-                                Router(modifier = Modifier, pokemonGymList)
+                                Router(modifier = Modifier)
                             }
                         }
                     }

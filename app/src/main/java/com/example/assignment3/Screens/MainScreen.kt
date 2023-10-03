@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.assignment3.AddGymForm
 import com.example.assignment3.LocalNavController
+import com.example.assignment3.LocalPokemonList
 import com.example.assignment3.PokemonGymInformation
 
 
@@ -27,9 +28,9 @@ import com.example.assignment3.PokemonGymInformation
  * then sends the list to DisplayList() so it can display the information the user gave below the text fields
  */
 @Composable
-fun MainScreen(modifier: Modifier, pokemonGymList: SnapshotStateList<PokemonGymInformation>)
+fun MainScreen(modifier: Modifier)
 {
-
+    val pokemonListCurrent = LocalPokemonList.current
     val navController = LocalNavController.current
 
         //Using a card here because it looks stylish than the Box
@@ -51,9 +52,9 @@ fun MainScreen(modifier: Modifier, pokemonGymList: SnapshotStateList<PokemonGymI
             )
             {
 
-                var lambda : (PokemonGymInformation) -> Unit = {pokemonGymList.add(it)} //A lambda function to store all the text Values into the list to be outputted on the DisplayList()
+                //var lambda : (PokemonGymInformation) -> Unit = {pokemonListCurrent.add(it)} //A lambda function to store all the text Values into the list to be outputted on the DisplayList()
 
-                AddGymForm(lambda, navController); //A function which takes input from the user and adds it to the list
+                AddGymForm(); //A function which takes input from the user and adds it to the list
 
             }
 

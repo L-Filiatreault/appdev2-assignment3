@@ -20,41 +20,36 @@ sealed class Routes(val route:String)
     object Details: Routes("DetailsScreenRoute/{indexNumber}"){
         fun go(indexNumber: String) = "DetailsScreenRoute/$indexNumber"
     }
-
-    //Make the path for the List screen here
     object ListScreen: Routes("ListScreenRoute")
 }
 
 @Composable
-fun Router(modifier: Modifier, pokemonGymList: SnapshotStateList<PokemonGymInformation>) {
+fun Router(modifier: Modifier) {
     val navController= LocalNavController.current
 
-    CompositionLocalProvider(LocalNavController provides navController){
+    NavHost(navController = navController, startDestination = "MainScreenRoute") {
+        composable(Routes.Main.route)
+        {
+            MainScreen(modifier)
+        }
+        composable(Routes.Details.route)
+        {
+            val indexNumber2 = it.arguments?.getString("indexNumber") !!
 
-        NavHost(navController = navController, startDestination = "MainScreenRoute") {
-            composable(Routes.Main.route)
-            {
-                MainScreen(modifier =Modifier, pokemonGymList)
-            }
-            composable(Routes.Details.route)
-            {
-                val indexNumber2 = it.arguments?.getString("indexNumber") !!
+            DetailsScreen(
+                indexNumber2,
+                modifier
+            )
+        }
+        composable(Routes.Information.route)
+        {
+            InformationScreen(modifier)
+        }
 
-                DetailsScreen(
-                    indexNumber2,
-                    modifier = Modifier
-                )
-            }
-            composable(Routes.Information.route)
-            {
-                InformationScreen(modifier = Modifier)
-            }
-
-            //Create composable for the list screen here
-            composable(Routes.ListScreen.route)
-            {
-                ListScreen(modifier = Modifier)
-            }
+        //Create composable for the list screen here
+        composable(Routes.ListScreen.route)
+        {
+            ListScreen(modifier)
         }
 
     }

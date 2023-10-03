@@ -54,8 +54,7 @@ fun DisplayListComposableStyled(item: PokemonGymInformation){
     {
         //Aligning the text items inside to be more uniform-like
         Row(modifier = Modifier
-            .padding(16.dp)
-            .fillMaxWidth(),
+            .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
 
