@@ -30,13 +30,13 @@ fun TopBar()
 {    val navController = LocalNavController.current
 
     var title by rememberSaveable{ mutableStateOf("Pokemon Gyms") };
-    //val navController = LocalNavController.current;
+
     CenterAlignedTopAppBar(
         colors = TopAppBarDefaults.smallTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.onSecondary,
+            containerColor = MaterialTheme.colorScheme.primary,
             titleContentColor = Color.White,
-          
-        ),
+
+            ),
         title = {
             Text(
                 text= title,
@@ -49,30 +49,29 @@ fun TopBar()
                 navController.navigateUp()
             }
             ) {
-                if(navController.navigateUp())
-                {
-                    Icon(
-                        imageVector = Icons.Filled.ArrowBack,
-                        contentDescription = "Go Back"
-                    )
-                }
 
-
+                Icon(
+                    imageVector = Icons.Filled.ArrowBack,
+                    contentDescription = "Go Back"
+                )
             }
         },
         actions = {
             Row()
             {
-                IconButton(onClick = {
-                        navController.navigate(Routes.Information.route)}) {
+                IconButton(
+                    onClick = {
+                        navController.navigate(Routes.Information.route)}
+                ) {
                     Icon(
                         imageVector = Icons.Filled.Info,
-                        contentDescription = "Go to Information")
+                        contentDescription = "Go to Information"
+                    )
                 }
             }
 
         },
 
-    )
+        )
 
 }
