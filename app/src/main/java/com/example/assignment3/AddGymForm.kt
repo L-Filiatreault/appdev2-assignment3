@@ -52,6 +52,7 @@ fun AddGymForm() {
     var gymNameValue by rememberSaveable { mutableStateOf("") } //This will keep the value the user inputted when the screen is rotated
     var gymLeaderValue by rememberSaveable { mutableStateOf("") }
     var gymBuildingURL by rememberSaveable { mutableStateOf("") }
+  
 
     //Setting things inside a column to make it appear ordered
     Column( modifier = Modifier.fillMaxWidth(),

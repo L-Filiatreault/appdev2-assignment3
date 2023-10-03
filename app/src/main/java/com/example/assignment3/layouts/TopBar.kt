@@ -33,8 +33,8 @@ fun TopBar()
 
     CenterAlignedTopAppBar(
         colors = TopAppBarDefaults.smallTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primary,
-            titleContentColor = Color.White,
+            containerColor = MaterialTheme.colorScheme.secondaryContainer,
+            titleContentColor = Color.Black,
 
             ),
         title = {

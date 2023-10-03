@@ -1,8 +1,7 @@
-package com.example.assignment3
+package com.example.assignment3.Screens
 
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,6 +25,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
+import com.example.assignment3.PokemonGymInformation
 
 /**
  * This function is for displaying the list items in a stylish manner, on Card composables, which are elevated and give a shadow effect.

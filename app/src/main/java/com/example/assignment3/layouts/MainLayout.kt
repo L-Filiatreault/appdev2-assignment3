@@ -22,7 +22,6 @@ fun MainLayout(
     content:@Composable ()-> Unit
 )
 {
-    //val navController = LocalNavController.current
 
     Scaffold(
         topBar =
