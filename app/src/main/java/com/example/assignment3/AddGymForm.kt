@@ -139,6 +139,7 @@ fun AddGymForm(pokemonGymList: (PokemonGymInformation) -> Unit, navController: N
                     //Converting it to string since it's the only way the value is stored inside of our Route string and can be read properly
                     selectedIndex = pList.indexOf(newPokemonGymObject).toString()
 
+                    navController.navigate(Routes.Details.go(selectedIndex))
 
                     //Resetting the values of the text fields to empty after the user inputs
                     gymNameValue = "";
