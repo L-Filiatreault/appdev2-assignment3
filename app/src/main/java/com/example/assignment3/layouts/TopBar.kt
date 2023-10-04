@@ -1,5 +1,6 @@
 package com.example.assignment3.layouts
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -46,7 +47,11 @@ fun TopBar()
         navigationIcon = {
             IconButton(onClick =
             {
-                navController.navigateUp()
+                //Putting this conditional here to prevent an out of list Exception crash
+                if(navController.navigateUp() != null)
+                {
+                    navController.navigateUp()
+                }
             }
             ) {
 
@@ -70,8 +75,7 @@ fun TopBar()
                 }
             }
 
-        },
-        scrollBehavior = scrollBehavior,
-        )
+        }
+    )
 
 }

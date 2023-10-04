@@ -43,7 +43,6 @@ fun BottomBar()
         var firstIndex = 1;
         //Retrieving the last entered pokemon gym object to keep our details current
         var pokemonGymObject = pokemonListCurrent.last();
-
         //Transforming it into a string ehre so our routes can read it
         var selectedIndex = pokemonListCurrent.indexOf(pokemonGymObject).toString()
 
