@@ -11,6 +11,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,6 +25,9 @@ import com.example.assignment3.SupportingFiles.Routes
 @Composable
 fun TopBar()
 {    val navController = LocalNavController.current
+
+
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 
     var title by rememberSaveable{ mutableStateOf("Pokemon Gyms") };
 
@@ -67,7 +71,7 @@ fun TopBar()
             }
 
         },
-
+        scrollBehavior = scrollBehavior,
         )
 
 }
