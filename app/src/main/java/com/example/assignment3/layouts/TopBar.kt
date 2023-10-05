@@ -3,6 +3,7 @@ package com.example.assignment3.layouts
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -54,18 +55,15 @@ fun TopBar()
                 //Putting this conditional here to prevent an out of list Exception crash
                 //When the user can sometimes go back to Details when the item is no longer there is a crash could happen, but this will
                 //prevent it. It means we can't use the Back button as intended but it's better than having the app crash
-                if(navController.navigateUp())
-                {
-                    navController.navigateUp()
-                }
+                navController.navigate(Routes.Main.route)
 
             }
             ) {
 
                 //An icon to display the arrow pointing back to indicate the user they can go back to a previous page
                 Icon(
-                    imageVector = Icons.Filled.ArrowBack,
-                    contentDescription = "Go Back"
+                    imageVector = Icons.Filled.Home,
+                    contentDescription = "Go Back to Home Page"
                 )
             }
         },
