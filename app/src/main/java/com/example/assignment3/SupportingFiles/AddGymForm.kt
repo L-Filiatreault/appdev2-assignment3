@@ -36,24 +36,24 @@ import com.example.assignment3.PokemonGymInformation
 
 
 /**
- * This Composable function has a lambda inside it's parameters, which is simple function to add all the user input from the text forms to the pokemonGymList.
+ * This Composable function allows all user input from the text forms to be added to the pokemonGymList.
  * The objective of this function is taking input from the user to fill out which gyms they have completed, and not input empty fields into the
  * list. As well it uses a rememberSaveable to restore items on the screen in case the screen was rotated and the component remembers the value inputted.
- * It also acts as a way to separate the concerns from the user's input into the list so it doesn't access any immutable variables.
  */
-
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddGymForm() {
 
-    val pokemonListCurrent = LocalPokemonList.current
-    val navController = LocalNavController.current
-    var selectedIndex by rememberSaveable { mutableStateOf("") }
+
+    val pokemonListCurrent = LocalPokemonList.current //Retrieving the pokemonGymList with the Provider pattern so information can be added instantly
+    val navController = LocalNavController.current //This is used here so the Details screen will be navigated to next after the user has clicked on the button "Add Gym to list"
+
+
+    var selectedIndex by rememberSaveable { mutableStateOf("") } //This will store the value of the index to help render the Details page to the currently-added pokemonGymList item
     var gymNameValue by rememberSaveable { mutableStateOf("") } //This will keep the value the user inputted when the screen is rotated
-    var gymLeaderValue by rememberSaveable { mutableStateOf("") }
-    var gymBuildingURL by rememberSaveable { mutableStateOf("") }
+    var gymLeaderValue by rememberSaveable { mutableStateOf("") } //This will keep the value the user inputted when the screen is rotated
+    var gymBuildingURL by rememberSaveable { mutableStateOf("") } //This will keep the value the user inputted when the screen is rotated
 
 
     //Setting things inside a column to make it appear ordered
@@ -63,6 +63,8 @@ fun AddGymForm() {
     )
     {
         Spacer(modifier = Modifier.padding(25.dp))
+
+        //Descriptive text to show the user what to do in case they don't know what the screen is used for primarily
         Text(text = "Welcome to the Pokemon Gym App" +
                 "\nThis app records all the gyms visited" +
                 "\nPlease fill out all fields below",
@@ -72,8 +74,8 @@ fun AddGymForm() {
 
         //Adding a row to store an icon beside the different text fields so it can differentiate each input to the user
         //Make it easier for the user to know what's the next value to be inputted
-        // In this case the user is inputting the pokemon gym they visited
-        //I got this icon idea from using the close button like you showed me in class opn Monday
+        //In this case the user is inputting the pokemon gym they visited
+
         Row()
         {
             IconButton(onClick = { /*TODO*/ }) {
@@ -92,7 +94,7 @@ fun AddGymForm() {
 
         //Adding a row to store an icon beside the different text fields so it can differentiate each input to the user
         //Make it easier for the user to know what's the next value to be inputted
-        // In this case the user is inputting the gym leader
+        //In this case the user is inputting the gym leader
         Row()
         {
             IconButton(onClick = { /*TODO*/ }) {
@@ -107,9 +109,9 @@ fun AddGymForm() {
         }
 
         Spacer(modifier = Modifier.padding(5.dp))
+
         //Adding a row to store an icon beside the different text fields so it can differentiate each input to the user
-        //Make it easier for the user to know what's the next value to be inputted
-        // In this case the user is inputting the badge they earned
+       //This indicates to the user to paste in the link to an image url that will be stored in the pokemonGymList and then display the image later on
         Row()
         {
             IconButton(onClick = { /*TODO*/ }) {
@@ -129,6 +131,10 @@ fun AddGymForm() {
 
         Spacer(modifier = Modifier.padding(10.dp))
 
+        //When the user clicks on the button a series of events will take place. The fields will be evaluated to make sure they're not containing
+        //empty data so to prevent null values being entered. As well the information from the text fields will
+        //be added to the data class PokemonGymInformation to create a new data object to be read from, and then it's stored in the pokemonGymList.
+        //The next screen navigated to is the Details screen, so as to show the user what information they have entered.
         Button(
             onClick = {
                 if(gymNameValue.isNotBlank() && gymLeaderValue.isNotBlank() && gymBuildingURL.isNotBlank())
@@ -142,6 +148,7 @@ fun AddGymForm() {
                     //Converting it to string since it's the only way the value is stored inside of our Route string and can be read properly
                     selectedIndex = pokemonListCurrent.indexOf(newPokemonGymObject).toString()
 
+                    //Routing to the Details page from here so the user can see the details of what they've entered
                     navController.navigate(Routes.Details.go(selectedIndex))
 
                     //Resetting the values of the text fields to empty after the user inputs

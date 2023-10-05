@@ -31,8 +31,9 @@ import com.example.assignment3.PokemonGymInformation
 /**
  * This function is for displaying the list items in a stylish manner, on Card composables, which are elevated and give a shadow effect.
  * The parameter contains each item in the pokemonGymList.
- * The items are displayed in a colour different than the other background or colours on the app so it stands out in a big way on the screen.
- *
+ * The items are displayed in a colour different than the other background or colours on the app so it stands out on the screen.
+ * A miniature version of the image provided is displayed on the card in a circular form, along with the name of the Gym.
+ * @item: a piece of data containing the name of the Gym, the Gym Leader, and the Gym Image URl.
  */
 @Composable
 fun DisplayListComposableStyled(item: PokemonGymInformation){
@@ -53,18 +54,21 @@ fun DisplayListComposableStyled(item: PokemonGymInformation){
         ), //This gives a slight shadow to the area below the card
     )
     {
-        //Aligning the text items inside to be more uniform-like
+        //Aligning the text and image items inside to be more uniform-like
         Row(modifier = Modifier
             .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
 
+            //Displaying the image inside a box
             Box(
                 modifier = Modifier
                     .size(50.dp)
                     .clip(CircleShape)
             )
             {
+                //The image URL given by the user before is displayed on the card in a circular-shape
+                //Got the idea for displaying images from a URL from here: https://medium.com/geekculture/jetpack-compose-image-loading-using-coil-647a8098c217
                 val painter = rememberImagePainter(data = item.gymImageUrl)
 
                 Image(
@@ -76,6 +80,7 @@ fun DisplayListComposableStyled(item: PokemonGymInformation){
             }
 
             Spacer(modifier = Modifier.width(16.dp))
+            //Beside the image the name of the Gym is displayed
             Text(
                 text = "Gym Name: " + item.gymName,
                 modifier = Modifier.padding(4.dp),

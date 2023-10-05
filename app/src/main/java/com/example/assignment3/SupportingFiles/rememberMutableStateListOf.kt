@@ -9,6 +9,11 @@ import androidx.compose.runtime.toMutableStateList
 
 //Got the idea to keep saved state of my list on screen with this:
 // https://stackoverflow.com/questions/68885154/using-remembersaveable-with-mutablestatelistof/68887484
+
+/**
+ * This composable function allows the lists not not lose their information
+ * when the screen is rotated and the composable is being rebuilt
+ */
 @Composable
 fun <T: Any> rememberMutableStateListOf(vararg elements: T): SnapshotStateList<T> {
     return rememberSaveable(

@@ -21,15 +21,13 @@ import com.example.assignment3.LocalPokemonList
 
 
 /**
- * This function is for displaying the card and main overall look of the app.
- * It also stores the mutable pokemonGymList, sends the list to the AddGymForm() to get user input,
- * then sends the list to DisplayList() so it can display the information the user gave below the text fields
+ * This function MainScreen is for displaying the card and main overall look of the app.
+ * It is the screen the user lands on when initially starting the app, and it calls AddGymForm()
+ * composable so to display the different text fields the user can enter their information in.
  */
 @Composable
 fun MainScreen(modifier: Modifier)
 {
-
-        //Using a card here because it looks stylish than the Box
     Card(modifier = modifier
             .fillMaxWidth()
             .fillMaxHeight()
@@ -42,13 +40,12 @@ fun MainScreen(modifier: Modifier)
         {
             //Organizing the items inside parts that have to displayed in a uniformed manner
             Column( modifier = Modifier
-                .verticalScroll(rememberScrollState()), //This is used since we didn't implement a lazylist on the Column, and we need to scroll through when the phone is rotated 90 degrees right or left
+                .verticalScroll(rememberScrollState()), //Using this so when the screen is rotated the screen is still scrollable by the user, it won't remain static
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             )
             {
                 AddGymForm(); //A function which takes input from the user and adds it to the list
-
             }
 
 

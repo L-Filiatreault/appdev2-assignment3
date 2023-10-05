@@ -3,7 +3,6 @@ package com.example.assignment3.Screens
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -11,21 +10,16 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -35,19 +29,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.assignment3.R
 
+/***
+ * The Information Screen function composable displays information about what the app is supposed to
+ * be used for to the user. It displays the mission of the app to the user alongside some nice images.
+ */
 @Composable
 fun InformationScreen(modifier: Modifier)
 {
-    //I got this idea from here: https://developer.android.com/jetpack/compose/text/user-input#style-input
-    val rainbowColors: List<Color> = listOf( Color.Yellow,
-        Color.Green, Color.Cyan, Color.Blue)
-    val brush = remember {
-        Brush.linearGradient(
-            colors = rainbowColors
-        )
-    }
-
-
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -63,6 +51,8 @@ fun InformationScreen(modifier: Modifier)
                 .fillMaxHeight()
         )
         {
+            //Used a large image at the top along with the text to give an impressive appearance for the Information page
+            //This image is credited to Vincent M.A. Janssen, and was taken from here: https://www.pexels.com/photo/person-holding-pokemon-ball-toy-1310847/
             val imagePainter = painterResource(id = R.drawable.pokeball)
             Image(
                 painter = imagePainter,
@@ -70,7 +60,7 @@ fun InformationScreen(modifier: Modifier)
                 modifier = modifier.fillMaxSize()
 
             )
-            Text(text = "About Us",
+            Text(text = "Information",
                 style = TextStyle(
                     fontSize = 50.sp,
                     fontWeight = FontWeight.Bold,
@@ -87,6 +77,7 @@ fun InformationScreen(modifier: Modifier)
         }
 
 
+        //This displays the text about what the app is used for in an aesthetically-pleasing manner
         Card(
             modifier = modifier
                 .fillMaxWidth()
@@ -111,6 +102,7 @@ fun InformationScreen(modifier: Modifier)
                 .fillMaxSize()
         )
         {
+            //This image is credited to Carolina Castilla Arias, and was taken from here: https://www.pexels.com/photo/close-up-photo-of-pokemon-pikachu-figurine-1716861/
             val imagePainter = painterResource(id = R.drawable.detectivepikachu)
             Image(
                 painter = imagePainter,
@@ -118,9 +110,5 @@ fun InformationScreen(modifier: Modifier)
                 modifier = modifier.fillMaxSize()
             )
         }
-
-
-
-
     }
 }
