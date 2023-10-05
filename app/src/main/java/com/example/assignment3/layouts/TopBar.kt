@@ -19,6 +19,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import com.example.assignment3.LocalNavController
+import com.example.assignment3.LocalPokemonList
 import com.example.assignment3.SupportingFiles.Routes
 
 
@@ -33,10 +34,8 @@ import com.example.assignment3.SupportingFiles.Routes
 @Composable
 fun TopBar()
 {
-
     val navController = LocalNavController.current //Using this to access the Information screen's route, and to go back when the user wants to
     var title by rememberSaveable{ mutableStateOf("Pokemon Gyms") }; //Storing the title in a rememberSaveable so it doesn't get erased when the screen is flipped
-
 
     CenterAlignedTopAppBar(
         colors = TopAppBarDefaults.smallTopAppBarColors(
@@ -53,12 +52,13 @@ fun TopBar()
             IconButton(onClick =
             {
                 //Putting this conditional here to prevent an out of list Exception crash
-                //When the user can sometimes go back to Details when the item is no longer there a crash could happen, but this will
-                //prevent it
-                if(navController.navigateUp() != null)
+                //When the user can sometimes go back to Details when the item is no longer there is a crash could happen, but this will
+                //prevent it. It means we can't use the Back button as intended but it's better than having the app crash
+                if(navController.navigateUp())
                 {
                     navController.navigateUp()
                 }
+
             }
             ) {
 

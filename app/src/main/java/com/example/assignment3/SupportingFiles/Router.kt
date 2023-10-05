@@ -1,7 +1,4 @@
 package com.example.assignment3.SupportingFiles
-import androidx.compose.animation.expandIn
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
@@ -51,18 +48,14 @@ fun Router(modifier: Modifier) {
     //This NavHost takes in the provider of navController so as to access the different screens properly
     NavHost(navController = navController, startDestination = "MainScreenRoute") {
 
-        //Accessing the Main screen with some navigation animation
-        composable(Routes.Main.route,
-            enterTransition = { fadeIn() },
-            exitTransition = { fadeOut() })
+        //Accessing the Main screen
+        composable(Routes.Main.route)
         {
             MainScreen(modifier)
         }
 
         //Navigating to the Details, retrieving the array index value of the item to be shown on Details screen
-        composable(Routes.Details.route,
-            enterTransition = { expandIn() },
-            exitTransition = { fadeOut()})
+        composable(Routes.Details.route)
         {
             val indexNumber2 = it.arguments?.getString("indexNumber") !! //Must be a string value for the indexNumber otherwise the route will not work properly
 
