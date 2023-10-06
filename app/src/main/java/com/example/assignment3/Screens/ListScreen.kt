@@ -74,6 +74,8 @@ fun ListScreen(modifier:Modifier) {
             //Or if the user doesn't want an item anymore on their list they can click on the X on the left hand side of the item and cause the
             //item to be removed from the list
             items(pokemonListCurrent) { item ->
+
+
                 Row(modifier = Modifier.padding(10.dp)
                     .clickable {
 
@@ -84,8 +86,13 @@ fun ListScreen(modifier:Modifier) {
                 )
                 {
                     //When a particular item no longer is needed then it can be removed from the list and the list will be updated immeadiately
+                    //https://developer.android.com/guide/navigation/backstack
                     IconButton(
-                        onClick = { pokemonListCurrent.remove(item) }
+                        onClick = {
+                            selectedIndex = pokemonListCurrent.indexOf(item).toString()
+                            pokemonListCurrent.remove(item)
+                            navController.popBackStack(Routes.Details.go(selectedIndex), inclusive = true)
+                        }
                     )
                     {
                         Icon(Icons.Filled.Close, contentDescription="Remove Gym Item")

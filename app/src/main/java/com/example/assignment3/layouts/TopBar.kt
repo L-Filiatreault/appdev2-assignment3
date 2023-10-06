@@ -1,6 +1,7 @@
 package com.example.assignment3.layouts
 
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Home
@@ -31,6 +32,8 @@ import com.example.assignment3.SupportingFiles.Routes
  * It holds the title of the app inside a rememberSaveable so the text doesn't get erased when the screen is rotated.
  * It uses a CenterAlignedTopAppBar because it looks better than small or medium bar sized.
  */
+
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar()
@@ -53,19 +56,23 @@ fun TopBar()
             IconButton(onClick =
             {
                 //Putting this conditional here to prevent an out of list Exception crash
-                //When the user can sometimes go back to Details when the item is no longer there is a crash could happen, but this will
+                //When the user can sometimes go back to Details when the item is no longer there is a crash could happen, this will
                 //prevent it. It means we can't use the Back button as intended but it's better than having the app crash
-                navController.navigate(Routes.Main.route)
 
+                if(navController.previousBackStackEntry != null)
+                {
+                    navController.popBackStack();
+                }
             }
             ) {
-
                 //An icon to display the arrow pointing back to indicate the user they can go back to a previous page
                 Icon(
-                    imageVector = Icons.Filled.Home,
-                    contentDescription = "Go Back to Home Page"
+                    imageVector = Icons.Filled.ArrowBack,
+                    contentDescription = "Go Back to Home Page",
+
                 )
             }
+
         },
         actions = {
 
@@ -89,3 +96,5 @@ fun TopBar()
     )
 
 }
+
+
