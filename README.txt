@@ -1,3 +1,5 @@
+#Pokemon Gym App
+
 About:
 
 The Pokemon Gym app is a mobile application built using Kotlin and Jetpack Compose.
@@ -11,7 +13,7 @@ This app is using multiple screens, navigation, images and state management.
 
 
 
-Features:
+*Features:*
 
 - Navigation: move from screen to screen to keep track of current items added.
 - State managment: Using state management to keep the user interface dynamic and responsive to user input or actions.
@@ -19,7 +21,7 @@ Features:
 
 
 
-Screens:
+*Screens:*
 
 First Screen: Main
 This screen displays a text field input where the user is asked to input Pokemon Gym information. Once they have filled out the 3 fields with the appropriate information, they can then press on a button to submit this information. They are then redirected to the next screen.
@@ -35,7 +37,7 @@ Fourth Screen: Information
 This screen displays the information of what this app is and whom it is for. 
 
 
-How to Use:
+##How to Use:
 1) Open the project in Android Studio or preferred IDE.
 2) Build and run the app on the emulator or a physical device.
 3) Input information in the text fields when on the Main screen.
@@ -47,5 +49,3 @@ How to Use:
 Technology Used:
 - Kotlin
 - Jetpack Compose
-
-Written October 4, 2023
