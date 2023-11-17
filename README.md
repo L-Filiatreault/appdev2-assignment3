@@ -1,4 +1,4 @@
-#Pokemon Gym App
+# Pokemon Gym App
 
 About:
 
@@ -37,7 +37,7 @@ Fourth Screen: Information
 This screen displays the information of what this app is and whom it is for. 
 
 
-##How to Use:
+## How to Use:
 1) Open the project in Android Studio or preferred IDE.
 2) Build and run the app on the emulator or a physical device.
 3) Input information in the text fields when on the Main screen.
