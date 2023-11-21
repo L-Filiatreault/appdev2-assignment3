@@ -61,7 +61,7 @@ fun TopBar()
 
                 if(navController.previousBackStackEntry != null)
                 {
-                    navController.popBackStack();
+                    navController.navigateUp();
                 }
             }
             ) {
